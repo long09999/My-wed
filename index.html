@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Start</title>
+
+<style>
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:#080808;
+  color:white;
+  font-family:Arial,sans-serif;
+}
+
+.box{text-align:center}
+
+button{
+  padding:16px 42px;
+  border:0;
+  border-radius:14px;
+  font-size:20px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+#count{
+  margin-top:25px;
+  font-size:28px;
+  font-weight:bold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+  <h1>🚀 Sẵn sàng?</h1>
+
+  <button id="start">
+    BẮT ĐẦU
+  </button>
+
+  <div id="count"></div>
+</div>
+
+<script>
+const start = document.getElementById("start");
+const count = document.getElementById("count");
+
+start.addEventListener("click", () => {
+
+  start.disabled = true;
+
+  let seconds = 3;
+
+  count.textContent = "Chuyển hướng sau " + seconds;
+
+  const timer = setInterval(() => {
+
+    seconds--;
+
+    if (seconds > 0) {
+      count.textContent = "Chuyển hướng sau " + seconds;
+      return;
+    }
+
+    clearInterval(timer);
+
+    // Random 0 -> 100
+    const random = Math.random() * 100;
+
+    if (random < 85) {
+
+      // 85%
+      window.location.href = "https://pat.com";
+
+    } else if (random < 90) {
+
+      // 5%
+      window.location.href = "https://vnsextop1.com";
+
+    } else {
+
+      // 10%
+      count.textContent = "🔄 Thử lại nhé!";
+      start.disabled = false;
+    }
+
+  }, 1000);
+
+});
+</script>
+
+</body>
+</html>
